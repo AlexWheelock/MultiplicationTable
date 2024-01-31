@@ -14,16 +14,18 @@ Module MultiplicationTable
         Dim value As String
 
         Console.WriteLine("What would you like the dimensions of the table to be?")
-        userInput = Console.ReadLine()
+
 
         Do
+            userInput = Console.ReadLine()
             Try
                 usernumber = CInt(userInput)
                 boolean1 = True
+                Console.WriteLine($"Enjoy your {usernumber}x{usernumber} Multiplication Table!")
             Catch ex As Exception
                 Console.WriteLine("Please enter an integer.")
             End Try
-        Loop Until Boolean1 = True
+        Loop Until boolean1 = True
 
         For row = 0 To usernumber
             For column = 0 To usernumber
