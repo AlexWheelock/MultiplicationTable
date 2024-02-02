@@ -6,57 +6,51 @@
 Module MultiplicationTable
 
     Sub Main()
-        Dim numbers(20, 20) As Integer
-        Dim temp As String
-        Dim userInput As String
+        Dim userInput$
         Dim userNumber As Integer
-        Dim validInput As Boolean
+        Dim valid As Boolean = False
 
-
-        Console.WriteLine("Please enter the max value of the the table that you would like it to go to." & vbNewLine _
-                          & "Press " & Chr(34) & "Q" & Chr(34) & " at any time to quit.")
         Do
-            validInput = False
-
-            'takes userInput, and tries to convert it to an integer
-            'Loops until there is a valid input containing an integer
+            Console.WriteLine("Please enter a number. Press Q at any time to quit.")
+            valid = False
             Do
                 userInput = Console.ReadLine()
                 Try
                     userNumber = CInt(userInput)
-                    validInput = True
-                    Console.WriteLine($"Enjoy your {userNumber} x {userNumber} Multiplication Table:")
+                    valid = True
+                    Console.WriteLine("You entered " & Chr(34) & $"{userNumber}" & Chr(34))
                 Catch ex As Exception
                     If userInput = "q" Then
-                        Console.Write("Have a nice day!")
+                        Console.WriteLine("Have a good day!")
                         Console.Read()
                         Exit Sub
                     ElseIf userInput = "Q" Then
-                        Console.Write("Have a nice day!")
+                        Console.WriteLine("Have a good day!")
                         Console.Read()
                         Exit Sub
-                    Else Console.WriteLine("You entered " & Chr(34) & $"{userInput}" & Chr(34) & ", please enter an integer.")
+                    Else
+                        Console.WriteLine("You entered " & Chr(34) & $"{userNumber}" & Chr(34) & ", please enter a valid number.")
                     End If
                 End Try
-            Loop Until validInput
+            Loop Until valid
 
+            MakeATable(userNumber)
 
-            For row = 1 To userNumber
-                For column = 1 To userNumber
-                    numbers(row, column) = row * column
-                Next
-            Next
-
-            For row = 1 To userNumber
-                For column = 1 To userNumber
-                    temp = CStr(numbers(row, column))
-                    Console.Write(temp.PadLeft(6))
-                Next
-            Next
-
-            Console.WriteLine()
-            Console.WriteLine("Please enter another max value to create another table, or press " & Chr(34) & "Q" & Chr(34) & " to quit.")
         Loop
+        Console.Read()
+    End Sub
+
+    Sub MakeATable(dimensions As Integer)
+        Dim temp$
+        Console.Clear()
+
+        For row = 1 To dimensions
+            For columns = 1 To dimensions
+                temp$ = (row * columns)
+                Console.Write(temp$.PadLeft(5))
+            Next
+            Console.WriteLine()
+        Next
     End Sub
 
 End Module
