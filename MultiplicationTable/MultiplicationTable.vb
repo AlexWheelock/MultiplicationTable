@@ -41,6 +41,7 @@ Module MultiplicationTable
             Loop Until valid
 
             Console.WriteLine($"Enjoy your {userNumber} x {userNumber} Multiplication Table:")
+            Console.WriteLine()
 
             'Goes to Sub MakeATable with user number as the dimensions for the table.
             MakeATable(userNumber)
