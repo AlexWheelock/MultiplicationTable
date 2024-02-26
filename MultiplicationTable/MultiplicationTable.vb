@@ -3,6 +3,9 @@
 'Multiplication Table
 'https://github.com/AlexWheelock/MultiplicationTable.git
 
+Option Explicit On
+Option Strict Off
+
 Module MultiplicationTable
 
     Sub Main()
